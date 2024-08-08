@@ -18,7 +18,7 @@ body {
 }
 
 header {
-    background-color: #c2c2c2;
+    background-color: #e4e4e4;
     color: white;
     padding: 0; /* Remove padding to avoid extra whitespace */
 }
@@ -99,6 +99,6 @@ section {
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #c2c2c2;
+    background-color: #e4e4e4;
     color: black;
 }
