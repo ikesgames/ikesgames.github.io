@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Monument Valley';
+    src: url('images/MonumentValley12-X55o.otf') format('opentype');
+}
+
+html, body {
+    height: 100%; /* Ensure full height for body */
+    margin: 0; /* Reset default margins */
+    padding: 0; /* Reset default padding */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+header {
+    background-color: #c2c2c2;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-family: 'Monument Valley', sans-serif;
+    color: black;
+    font-size: 32px;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.nav-buttons a {
+    font-family: 'Monument Valley', sans-serif; /* Apply custom font here */
+    font-size: 32px;
+    color: black;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 10px 15px;
+}
+
+main {
+    flex: 1; /* Allow main to grow and fill available space */
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #c2c2c2;
+    color: black;
+}
