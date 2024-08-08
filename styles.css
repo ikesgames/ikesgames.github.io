@@ -8,6 +8,7 @@ html, body {
     height: 100%; /* Ensure full height for body */
     margin: 0; /* Reset default margins */
     padding: 0; /* Reset default padding */
+    overflow: hidden; /* Hide the scrollbar on the body */
 }
 
 body {
@@ -17,9 +18,18 @@ body {
     background-color: #ffffff;
 }
 
+/* WebKit browsers */
+body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+}
+
+/* Firefox */
+body {
+    scrollbar-width: none; /* Hide scrollbar */
+}
+
 header {
-    background-color: #e4e4e4;
-    color: white;
+    background-color: rgba(228, 228, 228, 0.5); /* 50% opacity background */
     padding: 0; /* Remove padding to avoid extra whitespace */
 }
 
@@ -63,6 +73,16 @@ nav {
     padding: 10px 15px;
 }
 
+.text-border {
+    border-left: 2px solid black; /* Adjust thickness and color as needed */
+    padding-left: 10px; /* Add space between text and border */
+    margin-left: 10px; /* Adjust as needed */
+}
+
+h1 {
+    font-size: 3em; /* Adjust as needed for larger text */
+}
+
 /* Adjust font size for smaller screens */
 @media (max-width: 768px) {
     .logo span {
@@ -72,6 +92,10 @@ nav {
     .nav-buttons a {
         font-size: 1.2em;
         margin-left: 10px;
+    }
+
+    h1 {
+        font-size: 2.5em; /* Adjust for medium screens */
     }
 }
 
@@ -85,18 +109,31 @@ nav {
         margin-left: 5px;
         padding: 5px 10px;
     }
+
+    h1 {
+        font-size: 1.5em; /* Adjust for small screens */
+    }
 }
 
 main {
     flex: 1; /* Allow main to grow and fill available space */
-    padding: 20px;
+    padding: 0; /* Remove padding around main content */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 section {
-    margin-bottom: 20px;
+    margin: 0;
 }
 
-footer {
+.full-width-image {
+    width: 100%; /* Ensure the image takes up the full width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any default inline spacing */
+    margin: 0; /* Ensure no margin around the image */
+}
+
+.bottom-text {
     text-align: center;
     padding: 10px;
     background-color: #e4e4e4;
