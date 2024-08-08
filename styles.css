@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'Monument Valley';
     src: url('../Images/MonumentValley12-X55o.otf') format('opentype');
+    font-weight: bold;
 }
 
 html, body {
