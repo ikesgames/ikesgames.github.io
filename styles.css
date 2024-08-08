@@ -80,7 +80,7 @@ nav {
 }
 
 h1 {
-    font-size: 3em; /* Adjust as needed for larger text */
+    font-size: 2em; /* Adjust as needed for larger text */
 }
 
 /* Adjust font size for smaller screens */
@@ -111,7 +111,7 @@ h1 {
     }
 
     h1 {
-        font-size: 1.5em; /* Adjust for small screens */
+        font-size: 2em; /* Adjust for small screens */
     }
 }
 
@@ -124,6 +124,7 @@ main {
 
 section {
     margin: 0;
+    clear: both;
 }
 
 .full-width-image {
@@ -138,4 +139,65 @@ section {
     padding: 10px;
     background-color: #e4e4e4;
     color: black;
+}
+
+/* CSS for slideshows */
+
+.slideshow-container {
+    position: relative;
+    width: 33.33%; /* Set the width to one-third of its original size */
+    margin: 0; /* Remove automatic centering */
+    padding: 10px; /* Add padding */
+    overflow: hidden;
+    float: left; /* Align to the left */
+}
+
+.additional-slideshow {
+    position: relative;
+    width: 33.33%; /* Set the width to one-third of its original size */
+    margin: 0; /* Remove automatic centering */
+    padding: 10px; /* Add padding */
+    overflow: hidden;
+    float: left; /* Align to the left */
+}
+
+.slide, .slide2 {
+    display: none;
+}
+
+.slide img, .slide2 img {
+    width: 100%;
+    height: auto;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: white;
+}
+
+/* Container for slideshow sections */
+.slideshow-container-wrapper {
+    display: block;
+    width: 100%; /* Ensure the wrapper takes full width */
+    clear: both; /* Ensure the sections below it start on a new line */
 }
