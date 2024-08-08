@@ -20,13 +20,16 @@ body {
 header {
     background-color: #c2c2c2;
     color: white;
-    padding: 10px 20px;
+    padding: 0; /* Remove padding to avoid extra whitespace */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%; /* Ensure full width */
+    padding: 10px 20px; /* Adjust padding as needed */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .logo {
@@ -43,6 +46,7 @@ nav {
     font-family: 'Monument Valley', sans-serif;
     color: black;
     font-size: 32px;
+    font-weight: bold;
 }
 
 .nav-buttons {
@@ -52,11 +56,35 @@ nav {
 
 .nav-buttons a {
     font-family: 'Monument Valley', sans-serif; /* Apply custom font here */
-    font-size: 32px;
+    font-size: 1.5em; /* Responsive font size */
     color: black;
     text-decoration: none;
     margin-left: 20px;
     padding: 10px 15px;
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+    .logo span {
+        font-size: 24px;
+    }
+
+    .nav-buttons a {
+        font-size: 1.2em;
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo span {
+        font-size: 20px;
+    }
+
+    .nav-buttons a {
+        font-size: 1em;
+        margin-left: 5px;
+        padding: 5px 10px;
+    }
 }
 
 main {
