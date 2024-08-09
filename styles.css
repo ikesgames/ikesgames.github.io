@@ -8,7 +8,7 @@ html, body {
     height: 100%; /* Ensure full height for body */
     margin: 0; /* Reset default margins */
     padding: 0; /* Reset default padding */
-    overflow: hidden; /* Hide the scrollbar on the body */
+    /* overflow: hidden; Hide the scrollbar on the body */
 }
 
 body {
@@ -38,7 +38,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%; /* Ensure full width */
-    padding: 10px 20px; /* Adjust padding as needed */
+    padding: .25em 1.5em; /* Adjust padding as needed */
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
@@ -48,14 +48,14 @@ nav {
 }
 
 .logo img {
-    height: 40px;
-    margin-right: 10px;
+    height: 3.5rem;
+    margin-right: 1rem;
 }
 
 .logo span {
     font-family: 'Monument Valley', sans-serif;
     color: black;
-    font-size: 32px;
+    font-size: 2.5rem;
     font-weight: bold;
 }
 
@@ -66,68 +66,44 @@ nav {
 
 .nav-buttons a {
     font-family: 'Monument Valley', sans-serif; /* Apply custom font here */
-    font-size: 1.5em; /* Responsive font size */
+    font-size: 2.25rem; /* Responsive font size */
     color: black;
     text-decoration: none;
     margin-left: 20px;
-    padding: 10px 15px;
+    padding: 1rem 15px;
 }
 
 .text-border {
     border-left: 2px solid black; /* Adjust thickness and color as needed */
-    padding-left: 10px; /* Add space between text and border */
-    margin-left: 10px; /* Adjust as needed */
+    padding-left: 20px; /* Add space between text and border */
+    margin-left: 20px; /* Adjust as needed */
 }
 
 h1 {
-    font-size: 2em; /* Adjust as needed for larger text */
-}
-
-/* Adjust font size for smaller screens */
-@media (max-width: 768px) {
-    .logo span {
-        font-size: 24px;
-    }
-
-    .nav-buttons a {
-        font-size: 1.2em;
-        margin-left: 10px;
-    }
-
-    h1 {
-        font-size: 2.5em; /* Adjust for medium screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .logo span {
-        font-size: 20px;
-    }
-
-    .nav-buttons a {
-        font-size: 1em;
-        margin-left: 5px;
-        padding: 5px 10px;
-    }
-
-    h1 {
-        font-size: 2em; /* Adjust for small screens */
-    }
+    font-size: 3em; /* Adjust as needed for larger text */
 }
 
 main {
     flex: 1; /* Allow main to grow and fill available space */
     padding: 0; /* Remove padding around main content */
-    overflow-y: scroll; /* Enable vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 section {
     margin: 0;
     clear: both;
+    margin-top: 0px;
 }
 
 .full-width-image {
+    width: 100%; /* Ensure the image takes up the full width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any default inline spacing */
+    margin: 0; /* Ensure no margin around the image */
+}
+
+.banner-image {
     width: 100%; /* Ensure the image takes up the full width */
     height: auto; /* Maintain aspect ratio */
     display: block; /* Remove any default inline spacing */
@@ -141,24 +117,35 @@ section {
     color: black;
 }
 
+.text-container {
+    flex: 1;
+    max-width: 60%; /* Adjust as needed */
+    text-align: center;
+}
+
+.spacing-container {
+    height: 4rem; /* Adjust the height as needed for spacing */
+    width: 100%;
+}
+
 /* CSS for slideshows */
 
 .slideshow-container {
     position: relative;
-    width: 33.33%; /* Set the width to one-third of its original size */
-    margin: 0; /* Remove automatic centering */
-    padding: 10px; /* Add padding */
+    width: 35%;
+    margin: 0;
+    padding: 20px;
     overflow: hidden;
-    float: left; /* Align to the left */
+    flex: 1;
 }
 
 .additional-slideshow {
     position: relative;
-    width: 33.33%; /* Set the width to one-third of its original size */
-    margin: 0; /* Remove automatic centering */
-    padding: 10px; /* Add padding */
+    width: 35%;
+    margin: 0; 
+    padding: 20px;
     overflow: hidden;
-    float: left; /* Align to the left */
+    flex: 1;
 }
 
 .slide, .slide2 {
@@ -186,7 +173,7 @@ section {
 }
 
 .next {
-    right: 0;
+    right: 1rem;
     border-radius: 3px 0 0 3px;
 }
 
@@ -196,8 +183,80 @@ section {
 }
 
 /* Container for slideshow sections */
-.slideshow-container-wrapper {
+/* .slideshow-container-wrapper {
     display: block;
-    width: 100%; /* Ensure the wrapper takes full width */
-    clear: both; /* Ensure the sections below it start on a new line */
+    width: 100%; 
+    clear: both;
+} */
+
+.about-container-wrapper {
+    display: flex;
+    width: 100%; 
+    clear: both;
+}
+
+/* MOBILE COMPATABILITY */
+
+/* Medium Screens */
+@media (max-width: 768px) {
+    .logo span {
+        font-size: 2.25rem;
+    }
+
+    .nav-buttons a {
+        font-size: 2em;
+        margin-left: 10px;
+        padding: 1rem 5px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .full-width-image {
+        width: 150%;
+        margin-left: -25%;
+    }
+}
+
+/* Small Screens */
+@media (max-width: 480px) {
+    .logo img {
+        margin-right: .75rem;
+    }
+    
+    .logo span {
+        font-size: 1.25rem;
+    }
+
+    .text-container {
+        max-width: 80%; /* Adjust as needed */
+    }
+
+    .slideshow-container {
+        width: 80%;
+    }
+    
+    .additional-slideshow {
+        width: 80%;
+    }
+
+    .about-container-wrapper {
+        display: block;
+    }
+
+    .nav-buttons a {
+        font-size: 1.25em;
+        margin-left: 5px;
+        padding: 1rem 0px;
+    }
+
+    h1 {
+        font-size: 2em; /* Adjust for small screens */
+    }
+
+    .full-width-image {
+        width: 150%;
+        margin-left: -25%;
+    }
 }
