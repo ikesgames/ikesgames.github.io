@@ -7,45 +7,48 @@ let currentSlideIndex2 = 0;
 // Function to show slides
 function showSlides1(slideIndex, containerClass) {
     const slides = document.querySelectorAll(`${containerClass} .slide`);
+    // console.log(slides);
     if (slides.length === 0) return; // No slides to show
 
     // Ensure slideIndex is within bounds
     if (slideIndex >= 4) {
         slideIndex = 0;
     } else if (slideIndex < 0) {
-        slideIndex = 4;
+        slideIndex = 3;
     }
 
     slides.forEach((slide, index) => {
+        // console.log("slide ", slide, "index ", index);
         slide.style.display = (index === slideIndex) ? 'block' : 'none';
     });
 
-    console.log("Slides1: ", currentSlideIndex);
     currentSlideIndex = slideIndex;
+    console.log("Slides1: ", currentSlideIndex);
 }
 
 // Function to show slides
-function showSlides2(slideIndex, containerClass) {
+function showSlides2(slide2Index, containerClass) {
     const slides = document.querySelectorAll(`${containerClass} .slide2`);
     if (slides.length === 0) return; // No slides to show
 
     // Ensure slideIndex is within bounds
-    if (slideIndex >= 4) {
-        slideIndex = 0;
-    } else if (slideIndex < 0) {
-        slideIndex = 4;
+    if (slide2Index >= 4) {
+        slide2Index = 0;
+    } else if (slide2Index < 0) {
+        slide2Index = 4;
     }
 
     slides.forEach((slide, index) => {
-        slide.style.display = (index === slideIndex) ? 'block' : 'none';
+        slide.style.display = (index === slide2Index) ? 'block' : 'none';
     });
 
     console.log("Slides2: ", currentSlideIndex2);
-    currentSlideIndex2 = slideIndex;
+    currentSlideIndex2 = slide2Index;
 }
 
 // Function to navigate slides
 function changeSlide1(n) {
+    // console.log(n);
     showSlides1(currentSlideIndex + n, '.slideshow-container');
     // console.log('Changing first slideshow! ', currentSlideIndex + n);
 }
@@ -61,3 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlides1(currentSlideIndex, '.slideshow-container');
     showSlides2(currentSlideIndex2, '.additional-slideshow');
 });
+
+// // Navbar hide and show on scroll
+// let lastScrollTop = 0;
+// const navbar = document.getElementById('navbar');
+// console.log(navbar);
+// window.addEventListener('scroll', () => {
+//     const currentScroll = window.scrollY;
+//     console.log("scrolling");
+//     if (currentScroll > lastScrollTop) {
+//         navbar.style.top = "-60px"; // Adjust this value to the height of your navbar
+//         console.log(navbar.style.top);
+//     } else {
+//         navbar.style.top = "0";
+//         console.log(navbar.style.top);
+//     }
+//     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+// });
