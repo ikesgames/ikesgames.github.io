@@ -8,7 +8,8 @@ html, body {
     height: 100%; /* Ensure full height for body */
     margin: 0; /* Reset default margins */
     padding: 0; /* Reset default padding */
-    /* overflow: hidden; Hide the scrollbar on the body */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 body {
@@ -74,13 +75,23 @@ nav {
 }
 
 .text-border {
-    border-left: 2px solid black; /* Adjust thickness and color as needed */
-    padding-left: 20px; /* Add space between text and border */
-    margin-left: 20px; /* Adjust as needed */
+    border-left: none; /* Adjust thickness and color as needed: 2px solid black */
+    margin: 1rem;
+    /* padding-left: 1rem;
+    padding-right: 1rem; */
+    text-align: center;
 }
 
 h1 {
-    font-size: 3em; /* Adjust as needed for larger text */
+    font-size: 4rem; /* Adjust as needed for larger text */
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+p {
+    font-size: 2rem;
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 main {
@@ -98,9 +109,15 @@ section {
 
 .full-width-image {
     width: 100%; /* Ensure the image takes up the full width */
+    position: relative;
     height: auto; /* Maintain aspect ratio */
     display: block; /* Remove any default inline spacing */
     margin: 0; /* Ensure no margin around the image */
+}
+
+.image-container {
+    width: 100%; /* Container takes up full width of the viewport */
+    overflow: hidden; /* Hide any overflow content to prevent scrolling */
 }
 
 .banner-image {
@@ -112,7 +129,7 @@ section {
 
 .bottom-text {
     text-align: center;
-    padding: 10px;
+    padding: 1rem;
     background-color: #e4e4e4;
     color: black;
 }
@@ -137,6 +154,8 @@ section {
     padding: 20px;
     overflow: hidden;
     flex: 1;
+    align-items: center;
+    height: 100%;
 }
 
 .additional-slideshow {
@@ -146,6 +165,8 @@ section {
     padding: 20px;
     overflow: hidden;
     flex: 1;
+    align-items: center;
+    height: 100%;
 }
 
 .slide, .slide2 {
@@ -193,6 +214,7 @@ section {
     display: flex;
     width: 100%; 
     clear: both;
+    align-items: center;
 }
 
 /* MOBILE COMPATABILITY */
@@ -213,6 +235,10 @@ section {
         font-size: 2.5em;
     }
 
+    p {
+        font-size: 1.5em;
+    }
+
     .full-width-image {
         width: 150%;
         margin-left: -25%;
@@ -230,15 +256,19 @@ section {
     }
 
     .text-container {
-        max-width: 80%; /* Adjust as needed */
+        max-width: 100%; /* Adjust as needed */
     }
 
     .slideshow-container {
         width: 80%;
+        margin: 0 auto; /* Center the slideshow horizontally */
+
     }
-    
+
     .additional-slideshow {
         width: 80%;
+        margin: 0 auto; /* Center the slideshow horizontally */
+
     }
 
     .about-container-wrapper {
@@ -252,11 +282,20 @@ section {
     }
 
     h1 {
-        font-size: 2em; /* Adjust for small screens */
+        font-size: 2.25em; /* Adjust for small screens */
+    }
+
+    p {
+        font-size: 1.25em;
     }
 
     .full-width-image {
         width: 150%;
         margin-left: -25%;
+    }
+
+    .spacing-container {
+        height: 1rem; /* Adjust the height as needed for spacing */
+        width: 100%;
     }
 }
