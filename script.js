@@ -63,21 +63,45 @@ function changeSlide2(n) {
 document.addEventListener('DOMContentLoaded', () => {
     showSlides1(currentSlideIndex, '.slideshow-container');
     showSlides2(currentSlideIndex2, '.additional-slideshow');
+
+    const navbar = document.querySelector('nav');
+    const main = document.querySelector('main');
+
+    function adjustMainMargin() {
+        const navbarHeight = navbar.offsetHeight;
+        main.style.marginTop = `${navbarHeight}px`;
+    }
+
+    // Initial adjustment
+    adjustMainMargin();
 });
 
-// // Navbar hide and show on scroll
-// let lastScrollTop = 0;
-// const navbar = document.getElementById('navbar');
-// console.log(navbar);
-// window.addEventListener('scroll', () => {
-//     const currentScroll = window.scrollY;
-//     console.log("scrolling");
-//     if (currentScroll > lastScrollTop) {
-//         navbar.style.top = "-60px"; // Adjust this value to the height of your navbar
-//         console.log(navbar.style.top);
-//     } else {
-//         navbar.style.top = "0";
-//         console.log(navbar.style.top);
-//     }
-//     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
-// });
+// Navbar hide and show on scroll
+let lastScrollTop = 0; // Track the last scroll position
+const navbar = document.getElementById('navbar'); // Select the navbar
+let navbarHeight = navbar.offsetHeight;
+
+window.addEventListener('scroll', () => {
+    // Get the current scroll position
+    let currentScroll = window.scrollY;
+
+    // Compare the current scroll position with the last scroll position
+    if (currentScroll > lastScrollTop) {
+        // Scrolling down
+        console.log("Scrolling down");
+        navbar.style.top = `-${navbarHeight}px`; // Adjust based on the height of your navbar
+        console.log(navbar.style.top);
+    } else {
+        // Scrolling up
+        console.log("Scrolling up");
+        navbar.style.top = "0";
+    }
+
+    // Update lastScrollTop to the current position for the next scroll event
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
+});
+
+window.addEventListener('resize', () => {
+    navbarHeight = navbar.offsetHeight; // Update the height of the navbar
+    window.addEventListener('resize', adjustMainMargin);    // Adjust on window resize
+});
