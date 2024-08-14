@@ -5,10 +5,10 @@
 }
 
 html, body {
-    height: 100%; /* Ensure full height for body */
+    /* height: 100vh; */
     margin: 0; /* Reset default margins */
     padding: 0; /* Reset default padding */
-    overflow-x: hidden; /* Disable horizontal scrolling */
+    overflow-x: hidden; 
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
@@ -19,28 +19,29 @@ body {
     background-color: #ffffff;
 }
 
-/* WebKit browsers */
+WebKit browsers
 body::-webkit-scrollbar {
-    display: none; /* Hide scrollbar */
+    display: none;
 }
 
-/* Firefox */
+/* /* Firefox
 body {
-    scrollbar-width: none; /* Hide scrollbar */
-}
+    scrollbar-width: none; 
+} */
 
-header {
-    background-color: rgba(228, 228, 228, 0.5); /* 50% opacity background */
-    padding: 0; /* Remove padding to avoid extra whitespace */
-}
 
 nav {
+    background-color: rgba(228, 228, 228); 
+    padding: 0;
+    position: fixed; 
+    width: 100%; 
+    z-index: 1000; 
+    transition: top 0.3s; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Ensure full width */
-    padding: .25em 1.5em; /* Adjust padding as needed */
-    box-sizing: border-box; /* Include padding in width calculation */
+    padding: 0 1.5em; 
+    box-sizing: border-box; 
 }
 
 .logo {
@@ -95,10 +96,11 @@ p {
 }
 
 main {
+    /* margin-top: 5rem; */
     flex: 1; /* Allow main to grow and fill available space */
     padding: 0; /* Remove padding around main content */
-    overflow-y: auto; /* Enable vertical scrolling */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
 }
 
 section {
@@ -117,7 +119,7 @@ section {
 
 .image-container {
     width: 100%; /* Container takes up full width of the viewport */
-    overflow: hidden; /* Hide any overflow content to prevent scrolling */
+    /* overflow: hidden; */
 }
 
 .banner-image {
@@ -152,7 +154,7 @@ section {
     width: 35%;
     margin: 0;
     padding: 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
     flex: 1;
     align-items: center;
     height: 100%;
@@ -163,7 +165,7 @@ section {
     width: 35%;
     margin: 0; 
     padding: 20px;
-    overflow: hidden;
+    /* overflow: hidden; */
     flex: 1;
     align-items: center;
     height: 100%;
@@ -215,6 +217,33 @@ section {
     width: 100%; 
     clear: both;
     align-items: center;
+    margin-bottom: 2em;
+}
+
+.contact-logo {
+    width: 3rem; /* Adjust the width of the logo */
+    height: 3rem; /* Adjust the height of the logo */
+    vertical-align: middle; /* Align the logo with the text */
+    margin-right: 8px; /* Add some spacing between the logo and the text */
+}
+
+.contact-logo:hover {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
+}
+
+.text-border a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit the color from the parent element */
+}
+
+.logos-container {
+    display: flex;
+    justify-content: center; /* Center the logos horizontally */
+    margin-top: 1rem; /* Add some space above the logos */
+}
+
+.logos-container a {
+    margin: 0 10px; /* Add space between the logos */
 }
 
 /* MOBILE COMPATABILITY */
@@ -252,7 +281,7 @@ section {
     }
     
     .logo span {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 
     .text-container {
@@ -262,13 +291,11 @@ section {
     .slideshow-container {
         width: 80%;
         margin: 0 auto; /* Center the slideshow horizontally */
-
     }
 
     .additional-slideshow {
         width: 80%;
         margin: 0 auto; /* Center the slideshow horizontally */
-
     }
 
     .about-container-wrapper {
@@ -276,7 +303,7 @@ section {
     }
 
     .nav-buttons a {
-        font-size: 1.25em;
+        font-size: 1.5rem;
         margin-left: 5px;
         padding: 1rem 0px;
     }
