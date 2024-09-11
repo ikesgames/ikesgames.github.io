@@ -119,7 +119,7 @@ section {
 
 .image-container {
     width: 100%; /* Container takes up full width of the viewport */
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .banner-image {
