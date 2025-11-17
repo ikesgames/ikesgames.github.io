@@ -1,70 +1,108 @@
 // script.js
 
-// Initialize slide indices
-let currentSlideIndex = 0;
-let currentSlideIndex2 = 0;
+// Indices for each slideshow
+let recycleIndex = 0;
+let spellIndex = 0;
+let duckIndex = 0;
+let treatIndex = 0;
 
-// Function to show slides
-function showSlides1(slideIndex, containerClass) {
-    const slides = document.querySelectorAll(`${containerClass} .slide`);
-    // console.log(slides);
-    if (slides.length === 0) return; // No slides to show
+// ---------- RECYCLE ME (uses .slideshow-container .slide) ----------
+function showRecycleSlides(index) {
+    const slides = document.querySelectorAll('.slideshow-container .slide');
+    if (slides.length === 0) return;
 
-    // Ensure slideIndex is within bounds
-    if (slideIndex >= 4) {
-        slideIndex = 0;
-    } else if (slideIndex < 0) {
-        slideIndex = 3;
+    if (index >= slides.length) {
+        index = 0;
+    } else if (index < 0) {
+        index = slides.length - 1;
     }
 
-    slides.forEach((slide, index) => {
-        // console.log("slide ", slide, "index ", index);
-        slide.style.display = (index === slideIndex) ? 'block' : 'none';
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
     });
 
-    currentSlideIndex = slideIndex;
-    console.log("Slides1: ", currentSlideIndex);
+    recycleIndex = index;
 }
 
-// Function to show slides
-function showSlides2(slide2Index, containerClass) {
-    const slides = document.querySelectorAll(`${containerClass} .slide2`);
-    if (slides.length === 0) return; // No slides to show
+function changeSlide1(delta) {
+    showRecycleSlides(recycleIndex + delta);
+}
 
-    // Ensure slideIndex is within bounds
-    if (slide2Index >= 4) {
-        slide2Index = 0;
-    } else if (slide2Index < 0) {
-        slide2Index = 4;
+// ---------- SPELLFISTER (uses .additional-slideshow .slide2) ----------
+function showSpellSlides(index) {
+    const slides = document.querySelectorAll('.additional-slideshow .slide2');
+    if (slides.length === 0) return;
+
+    if (index >= slides.length) {
+        index = 0;
+    } else if (index < 0) {
+        index = slides.length - 1;
     }
 
-    slides.forEach((slide, index) => {
-        slide.style.display = (index === slide2Index) ? 'block' : 'none';
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
     });
 
-    console.log("Slides2: ", currentSlideIndex2);
-    currentSlideIndex2 = slide2Index;
+    spellIndex = index;
 }
 
-// Function to navigate slides
-function changeSlide1(n) {
-    // console.log(n);
-    showSlides1(currentSlideIndex + n, '.slideshow-container');
-    // console.log('Changing first slideshow! ', currentSlideIndex + n);
+function changeSlide2(delta) {
+    showSpellSlides(spellIndex + delta);
 }
 
-// Function to navigate additional slides
-function changeSlide2(n) {
-    showSlides2(currentSlideIndex2 + n, '.additional-slideshow');
-    // console.log('Changing second slideshow! ', currentSlideIndex2 + n);
+// ---------- DUCK TD (uses .duck-slideshow .duck-slide) ----------
+function showDuckSlides(index) {
+    const slides = document.querySelectorAll('.duck-slideshow .duck-slide');
+    if (slides.length === 0) return;
+
+    if (index >= slides.length) {
+        index = 0;
+    } else if (index < 0) {
+        index = slides.length - 1;
+    }
+
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+    });
+
+    duckIndex = index;
 }
 
-// Initialize slides when the page loads
+function changeDuckSlide(delta) {
+    showDuckSlides(duckIndex + delta);
+}
+
+// ---------- TRICK OR TREAT (uses .treat-slideshow .treat-slide) ----------
+function showTreatSlides(index) {
+    const slides = document.querySelectorAll('.treat-slideshow .treat-slide');
+    if (slides.length === 0) return;
+
+    if (index >= slides.length) {
+        index = 0;
+    } else if (index < 0) {
+        index = slides.length - 1;
+    }
+
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+    });
+
+    treatIndex = index;
+}
+
+function changeTreatSlide(delta) {
+    showTreatSlides(treatIndex + delta);
+}
+
+// ---------- NAVBAR + INITIALIZATION ----------
 document.addEventListener('DOMContentLoaded', () => {
-    showSlides1(currentSlideIndex, '.slideshow-container');
-    showSlides2(currentSlideIndex2, '.additional-slideshow');
+    // Initialize all slideshows so they don't start blank
+    showDuckSlides(0);
+    showTreatSlides(0);
+    showSpellSlides(0);
+    showRecycleSlides(0);
 
-    const navbar = document.querySelector('nav');
+    const navbar = document.getElementById('navbar');
     const main = document.querySelector('main');
 
     function adjustMainMargin() {
@@ -72,36 +110,24 @@ document.addEventListener('DOMContentLoaded', () => {
         main.style.marginTop = `${navbarHeight}px`;
     }
 
-    // Initial adjustment
     adjustMainMargin();
-});
+    window.addEventListener('resize', adjustMainMargin);
 
-// Navbar hide and show on scroll
-let lastScrollTop = 0; // Track the last scroll position
-const navbar = document.getElementById('navbar'); // Select the navbar
-let navbarHeight = navbar.offsetHeight;
+    // Navbar hide / show on scroll
+    let lastScrollTop = 0;
+    let navbarHeight = navbar.offsetHeight;
 
-window.addEventListener('scroll', () => {
-    // Get the current scroll position
-    let currentScroll = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-    // Compare the current scroll position with the last scroll position
-    if (currentScroll > lastScrollTop) {
-        // Scrolling down
-        console.log("Scrolling down");
-        navbar.style.top = `-${navbarHeight}px`; // Adjust based on the height of your navbar
-        console.log(navbar.style.top);
-    } else {
-        // Scrolling up
-        console.log("Scrolling up");
-        navbar.style.top = "0";
-    }
+        if (currentScroll > lastScrollTop) {
+            // Scrolling down
+            navbar.style.top = `-${navbarHeight}px`;
+        } else {
+            // Scrolling up
+            navbar.style.top = '0';
+        }
 
-    // Update lastScrollTop to the current position for the next scroll event
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
-});
-
-window.addEventListener('resize', () => {
-    navbarHeight = navbar.offsetHeight; // Update the height of the navbar
-    window.addEventListener('resize', adjustMainMargin);    // Adjust on window resize
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
 });
